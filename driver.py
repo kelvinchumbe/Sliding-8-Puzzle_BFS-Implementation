@@ -9,7 +9,6 @@ class Queue:
     def __init__(self):
         self.items = []
         self.size = 0
-        self.max_size = 6
 
     # method to add items to the queue
     def enqueue(self, item):
