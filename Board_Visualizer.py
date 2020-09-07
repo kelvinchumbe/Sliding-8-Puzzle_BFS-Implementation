@@ -59,30 +59,31 @@ class GameBoard:
 
     # method to automatically play the game after the directions to move the blank space have been determined
     def auto_Play(self, directions):
-        for direction in directions:
-            print(direction)
-            if direction is "up":
-                new_board_state = self.move_Up(self.board_node.board_state, self.blank_pos)
-                self.board_node = BoardNode(new_board_state)
-                self.blank_pos = self.board_node.find_blankpos()
-                self.draw_board(new_board_state)
+        if directions[0] is not False:
+            for direction in directions:
+                print(direction)
+                if direction is "up":
+                    new_board_state = self.move_Up(self.board_node.board_state, self.blank_pos)
+                    self.board_node = BoardNode(new_board_state)
+                    self.blank_pos = self.board_node.find_blankpos()
+                    self.draw_board(new_board_state)
 
-            elif direction is "down":
-                new_board_state = self.move_Down(self.board_node.board_state, self.blank_pos)
-                self.board_node = BoardNode(new_board_state)
-                self.blank_pos = self.board_node.find_blankpos()
-                self.draw_board(new_board_state)
+                elif direction is "down":
+                    new_board_state = self.move_Down(self.board_node.board_state, self.blank_pos)
+                    self.board_node = BoardNode(new_board_state)
+                    self.blank_pos = self.board_node.find_blankpos()
+                    self.draw_board(new_board_state)
 
-            elif direction is "left":
-                new_board_state = self.move_Left(self.board_node.board_state, self.blank_pos)
-                self.board_node = BoardNode(new_board_state)
-                self.blank_pos = self.board_node.find_blankpos()
-                self.draw_board(new_board_state)
+                elif direction is "left":
+                    new_board_state = self.move_Left(self.board_node.board_state, self.blank_pos)
+                    self.board_node = BoardNode(new_board_state)
+                    self.blank_pos = self.board_node.find_blankpos()
+                    self.draw_board(new_board_state)
 
-            elif direction is "right":
-                new_board_state = self.move_Right(self.board_node.board_state, self.blank_pos)
-                self.board_node = BoardNode(new_board_state)
-                self.blank_pos = self.board_node.find_blankpos()
-                self.draw_board(new_board_state)
+                elif direction is "right":
+                    new_board_state = self.move_Right(self.board_node.board_state, self.blank_pos)
+                    self.board_node = BoardNode(new_board_state)
+                    self.blank_pos = self.board_node.find_blankpos()
+                    self.draw_board(new_board_state)
 
-            time.sleep(2)
+                time.sleep(2)

@@ -13,6 +13,13 @@ if __name__ == '__main__':
     gameboard = GameBoard(board)
     gameboard.draw_board(board)
 
-    directions = bfs(gameboard.board_node)
-
+    print(" BFS Game")
+    bfs_solver = Solver(board, [0, 1, 2, 3, 4, 5, 6, 7, 8])
+    directions = bfs_solver.A_Star()
     gameboard.auto_Play(directions)
+
+
+    print(" A_Star Game")
+    a_star_solver = Solver(board, [0,1,2,3,4,5,6,7,8])
+    directions2 = a_star_solver.A_Star()
+    gameboard.auto_Play(directions2)

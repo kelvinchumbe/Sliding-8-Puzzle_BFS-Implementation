@@ -27,4 +27,3 @@ class Queue:
                 return True
 
         return False
-

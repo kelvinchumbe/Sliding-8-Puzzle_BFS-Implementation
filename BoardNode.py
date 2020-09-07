@@ -6,13 +6,13 @@ class BoardNode:
         self.depth = 0
         self.children = []
         self.cost = 0
+        self.g_score = float("inf")
+        self.f_score = 0
         self.parent = None
 
-        self.board = board
-
-        self.board_state[0] = self.board[:3]
-        self.board_state[1] = self.board[3:6]
-        self.board_state[2] = self.board[6:]
+        self.board_state[0] = board[:3]
+        self.board_state[1] = board[3:6]
+        self.board_state[2] = board[6:]
 
     # method to display the board
     def display_board(self):
@@ -125,6 +125,9 @@ class BoardNode:
 
         else:
             return None
+
+    def __lt__(self, other):
+        return self.f_score < other.f_score
 
     def __str__(self):
         return ''.join([str(x) + "," for sub in self.board_state for x in sub])
