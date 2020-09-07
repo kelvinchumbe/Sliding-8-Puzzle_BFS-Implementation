@@ -106,7 +106,7 @@ class Solver:
         initial_node.g_score = 0
 
         # Initialize the start node's h_score to the initial number of misplaced tiles
-        h_score = self.hamming_distance(initial_node, [0, 1, 2, 3, 4, 5, 6, 7, 8])
+        h_score = self.hamming_distance(initial_node, self.goal_state)
 
         # f_score = g_score + h_score
         initial_node.f_score = initial_node.g_score + h_score
@@ -116,7 +116,6 @@ class Solver:
 
         while not openlist.isEmpty():
             node_explored += 1
-            print(node_explored)
             node = openlist.pop()[1]
 
             if self.is_goalstate([x for sub in node.board_state for x in sub]):
@@ -139,9 +138,8 @@ class Solver:
 
                     current_node = current_node.parent
 
-                print("These are the steps taken to get to the goal state")
+                print("These are the steps taken to get to the goal state \n")
                 directions.reverse()
-                print(directions)
                 return directions
 
             # if the goal hasn't been found, identify the node's children i.e. the next posibble positions to move the blank space from its current position
@@ -151,27 +149,21 @@ class Solver:
 
             # link all the children to the parent node and is they haven't been explored yet, add them to the frontier so they will be explored
             for child in node.children:
-                if child in closedlist:
-                    continue
 
                 tent_g_score = node.g_score + 1
 
-                if openlist.exists(child) and tent_g_score < child.g_score:
-                    openlist.remove(child)
-
-                if child in closedlist and tent_g_score < child.g_score:
-                    closedlist.remove(child)
-
-                if not openlist.exists(child):
+                if tent_g_score < child.g_score:
                     child.parent = node
                     child.g_score = tent_g_score
-                    child.f_score = child.g_score + self.hamming_distance(child, [0, 1, 2, 3, 4, 5, 6, 7, 8])
+                    child.f_score = child.g_score + self.hamming_distance(child, self.goal_state)
 
-                    openlist.push(child.f_score, child)
-
-                elif tent_g_score <= child.g_score:
+                if openlist.exists(child) and node.f_score <= child.f_score:
                     continue
+
+                if child in closedlist and node.f_score < child.f_score:
+                    continue
+
+                openlist.push(child.f_score, child)
 
         print("Did not find goal state")
         return False
-

@@ -26,19 +26,3 @@ class PriorityQueue:
 
     def remove(self, item):
         return self.heap.remove(item)
-
-#
-# from BoardNode import *
-#
-# pq = PriorityQueue()
-# pq.push(1, BoardNode([1, 2, 3, 4, 5, 6, 7, 8, 9]))
-# pq.push(2, BoardNode([1, 2, 3, 4, 5, 6, 7, 8, 9]))
-# pq.push(0, BoardNode([1, 2, 3, 4, 5, 6, 7, 8, 9]))
-#
-# print(pq.heap)
-# pq.pop()
-# print(pq.heap)
-# pq.pop()
-# print(pq.heap)
-# pq.push(4, BoardNode([1, 2, 3, 4, 5, 6, 7, 8, 9]))
-# print(pq.heap)
