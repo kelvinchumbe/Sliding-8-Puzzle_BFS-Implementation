@@ -17,8 +17,6 @@ if __name__ == '__main__':
         board[i] = int(board[i])
         goal_state[i] = int(goal_state[i])
 
-
-
     gameboard = GameBoard(board)
     gameboard.draw_board(board)
 
