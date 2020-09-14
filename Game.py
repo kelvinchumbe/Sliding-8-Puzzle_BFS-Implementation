@@ -3,12 +3,8 @@ from driver import *
 from Board_Visualizer import *
 import sys
 
-# Input 1: [1, 2, 5, 3, 4, 0, 6, 7, 8])
-
 if __name__ == '__main__':
-    # board = input("Enter the board state as a list e.g. '1,2,3,4,5,6,7,8,0': \n")
-    # goal_state = input("Enter the desired goal state: \n")
-    # solver_function = input("Enter the algorithm to solve with: \n")
+    # Run program from command line with Game.py initial_board_state final_board_state i.e. > Game.py 0,1,2,3,4,5,6,7,8,9 0,9,8,7,6,5,4,3,2,1
 
     board = sys.argv[1]
     goal_state = sys.argv[2]
@@ -37,7 +33,3 @@ if __name__ == '__main__':
         a_star_solver = Solver(board, goal_state)
         directions2 = a_star_solver.A_Star()
         gameboard.auto_Play(directions2)
-
-        # a_star_solver = Solver(board, goal_state)
-        # directions2 = a_star_solver.A_Star()
-        # print(directions2)
